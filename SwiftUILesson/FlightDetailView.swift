@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct FlightDetailView: View {
+    let flight: FlightInformation
+    @Binding var isPresented: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 8) {
+            Text("\(flight.airline) - Flight \(flight.number)")
+                .font(.title)
+            Text("\(flight.direction == .arrival ? "From" : "To") \(flight.otherAirport)")
+            
+            Text("\(flight.flightStatus)")
+                .foregroundStyle(Color(flight.timelineColor))
+            Spacer()
+            
+            Button("Done") {
+                isPresented.toggle()
+            }
+        }
+        .padding()
+        .font(.headline)
+        
     }
 }
 
 #Preview {
-    FlightDetailView()
+    FlightDetailView(flight: FlightInformation.generateFlight(), isPresented: .constant(true))
 }

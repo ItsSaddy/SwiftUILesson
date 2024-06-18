@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct FlightRowView: View {
+    let flight: FlightInformation
+    @State private var isPresented = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: { isPresented.toggle() }) {
+            HStack {
+                Text("\(flight.airline) \(flight.number)")
+                    .frame(width: 120, alignment: .leading)
+                
+                Text("\(flight.otherAirport)")
+                    .frame(alignment: .leading)
+                
+                Spacer()
+                
+                Text(flight.flightStatus)
+            }
+        }
+        .sheet(isPresented: $isPresented) {
+            FlightDetailView(flight: flight, isPresented: $isPresented)
+        }
     }
 }
 
 #Preview {
-    FlightRowView()
+    FlightRowView(flight: FlightInformation.generateFlight())
 }

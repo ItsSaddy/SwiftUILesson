@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct FlightBoardView: View {
+    let title: String
+    let flights: [FlightInformation]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(flights, id: \.self) { flight in
+            FlightRowView(flight: flight)
+        }
+        .listStyle(.plain)
+        .navigationTitle(title)
     }
 }
 
 #Preview {
-    FlightBoardView()
+    FlightBoardView(
+        title: "Board Title",
+        flights: FlightInformation.generateFlights()
+    )
 }
