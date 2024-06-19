@@ -11,12 +11,25 @@ struct FlightBoardView: View {
     let title: String
     let flights: [FlightInformation]
     
+    @State private var hiddenCanceled = false
+    
+    private var shownFlights: [FlightInformation] {
+        hiddenCanceled
+            ? flights.filter( {$0.status != .cancelled })
+            : flights
+    }
+    
     var body: some View {
-        List(flights, id: \.self) { flight in
+        List(shownFlights, id: \.self) { flight in
             FlightRowView(flight: flight)
         }
         .listStyle(.plain)
         .navigationTitle(title)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Toggle("Hide canceled", isOn: $hiddenCanceled)
+            }
+        }
     }
 }
 

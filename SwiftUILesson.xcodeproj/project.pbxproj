@@ -67,11 +67,11 @@
 			children = (
 				2DE7406F2C11BBEB0062E4C4 /* SwiftUILessonApp.swift */,
 				2DE740712C11BBEB0062E4C4 /* ContentView.swift */,
-				2DE7408D2C21AE780062E4C4 /* FlightDetailView.swift */,
 				2DE7407D2C218AFF0062E4C4 /* UserProfileView.swift */,
 				2DE7407F2C218BA60062E4C4 /* HomeView.swift */,
 				2DE740862C21955A0062E4C4 /* FlightBoardView.swift */,
 				2DE740882C219F4C0062E4C4 /* FlightRowView.swift */,
+				2DE7408D2C21AE780062E4C4 /* FlightDetailView.swift */,
 				2DE740832C218EC90062E4C4 /* Model */,
 				2DE740732C11BBEC0062E4C4 /* Assets.xcassets */,
 				2DE740752C11BBEC0062E4C4 /* Preview Content */,
